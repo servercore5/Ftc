@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+
+<body>
+
+<header>
+<img src="125.png" class="logo">
+<h3>Secure Investigation Portal</h3>
+</header>
+
+<div class="container">
+
+<input id="case" placeholder="Case ID">
+<button onclick="verify()">Verify</button>
+
+<p id="msg"></p>
+
+<button onclick="go('signup8.html')">Next</button>
+
+</div>
+
+<footer>© 2026 Secure System</footer>
+
+<script>
+function verify(){
+ if(case.value==="778249"){
+  msg.innerText="Apple Case Linked ✅";
+ }
+}
+</script>
+
+</body>
+</html>
