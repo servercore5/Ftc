@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+
+<body>
+
+<header>
+<img src="125.png" class="logo">
+<h3>Secure Investigation Portal</h3>
+</header>
+
+<div class="container">
+
+<input placeholder="Enter IP">
+<button onclick="verify()">Verify</button>
+
+<div class="loader" id="loader" style="display:none;"></div>
+<p id="text"></p>
+
+<button onclick="go('signup5.html')">Next</button>
+
+</div>
+
+<footer>© 2026 Secure System</footer>
+
+<script>
+function verify(){
+ loader.style.display="block";
+
+ let steps=[
+ "Encrypting...",
+ "Checking Database...",
+ "Verified ✅"
+ ];
+
+ let i=0;
+ let int=setInterval(()=>{
+  text.innerText=steps[i];
+  i++;
+  if(i>=steps.length) clearInterval(int);
+ },700);
+}
+</script>
+
+</body>
+</html>
