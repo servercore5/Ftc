@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+
+<body>
+
+<header>
+<img src="125.png" class="logo">
+<h3>Secure Investigation Portal</h3>
+</header>
+
+<div class="container">
+
+<input id="key" placeholder="Security Key">
+
+<button onclick="verify()">Verify</button>
+
+<p id="msg"></p>
+
+<button onclick="go('signup9.html')">Next</button>
+
+</div>
+
+<footer>© 2026 Secure System</footer>
+
+<script>
+function verify(){
+ if(key.value==="876875689008"){
+  msg.innerText="Officer Verified ✅";
+ }
+}
+</script>
+
+</body>
+</html>
