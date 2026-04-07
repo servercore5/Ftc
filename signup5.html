@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+
+<body>
+
+<header>
+<img src="125.png" class="logo">
+<h3>Secure Investigation Portal</h3>
+</header>
+
+<div class="container">
+
+<input id="user" placeholder="Username">
+
+<button onclick="suggest()">Suggest</button>
+<button onclick="check()">Check</button>
+
+<p id="msg"></p>
+
+<input type="password" placeholder="Password">
+<input type="password" placeholder="Confirm Password">
+
+<button onclick="go('signup6.html')">Next</button>
+
+</div>
+
+<footer>© 2026 Secure System</footer>
+
+<script>
+function suggest(){
+ user.value="agent"+Math.floor(Math.random()*9999);
+}
+
+function check(){
+ msg.innerText="Checking...";
+ setTimeout(()=> msg.innerText="Available ✅",2000);
+}
+</script>
+
+</body>
+</html>
