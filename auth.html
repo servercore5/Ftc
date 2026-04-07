@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+<script src="firebase.js" type="module"></script>
+</head>
+
+<body>
+
+<header>
+<img src="125.png" class="logo">
+<h3>Secure Investigation Portal</h3>
+</header>
+
+<div class="container">
+<h2>Login</h2>
+
+<input id="email" placeholder="Email">
+<input id="pass" type="password" placeholder="Password">
+
+<button onclick="login()">Sign In</button>
+<button onclick="go('signup1.html')">Sign Up</button>
+</div>
+
+<footer>© 2026 Secure System</footer>
+
+<script type="module">
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+window.login = function(){
+ signInWithEmailAndPassword(auth,email.value,pass.value)
+ .then(()=> go("dashboard.html"))
+ .catch(e=>alert(e.message));
+}
+</script>
+
+</body>
+</html>
