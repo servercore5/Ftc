@@ -1,32 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+
+<title>Identity Verification</title>
+
 </head>
 
 <body>
 
 <header>
-<img src="125.png" class="logo">
-<h3>Secure Investigation Portal</h3>
+  <img src="125.png" class="logo">
+  <h3>Secure Investigation Portal</h3>
 </header>
 
 <div class="container">
 
-<select>
-<option>Driver License</option>
-<option>Passport</option>
-<option>SSN</option>
+<h2>Identity Verification</h2>
+
+<select id="idType">
+  <option value="">Select ID Type</option>
+  <option>Driver License</option>
+  <option>Passport</option>
+  <option>SSN</option>
+  <option>Other Government ID</option>
+  <option>Fetch from Database</option>
 </select>
 
-<button>Upload</button>
+<input type="file" id="file" style="display:none">
 
-<button onclick="go('signup7.html')">Next</button>
+<button onclick="upload()">Upload / Scan</button>
+
+<div id="loader" class="loader" style="display:none;"></div>
+<p id="status"></p>
+
+<button onclick="next()">Next</button>
 
 </div>
 
-<footer>© 2026 Secure System</footer>
+<footer>
+© 2026 Secure System
+</footer>
+
+<!-- ✅ SCRIPT -->
+<script>
+
+let verified = false;
+
+function upload(){
+
+  let type = document.getElementById("idType").value;
+  let status = document.getElementById("status");
+  let loader = document.getElementById("loader");
+
+  if(!type){
+    status.innerText = "Select ID type first ❌";
+    return;
+  }
+
+  loader.style.display = "block";
+  status.innerText = "Processing...";
+
+  setTimeout(()=>{
+    loader.style.display = "none";
+    status.innerText = "Verification Successful ✅";
+    verified = true;
+  },1500);
+}
+
+function next(){
+
+  let status = document.getElementById("status");
+
+  if(!verified){
+    status.innerText = "Please verify your ID first ❌";
+    return;
+  }
+
+  status.innerText = "Proceeding...";
+
+  setTimeout(()=>{
+    window.location.href = "signup7.html";
+  },1000);
+}
+
+</script>
 
 </body>
 </html>
