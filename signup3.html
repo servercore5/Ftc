@@ -1,30 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+
+<title>Select Account</title>
+
 </head>
 
 <body>
 
 <header>
-<img src="125.png" class="logo">
-<h3>Secure Investigation Portal</h3>
+  <img src="125.png" class="logo">
+  <h3>Secure Investigation Portal</h3>
 </header>
 
 <div class="container">
 
-<h3>Select Account</h3>
+<h2>Select Account</h2>
 
-<button>ACC-001</button>
-<button>ACC-002</button>
-<button>ACC-003</button>
+<!-- ACCOUNT BUTTONS -->
+<button onclick="selectAccount('ACC-001')">ACC-001</button>
+<button onclick="selectAccount('ACC-002')">ACC-002</button>
+<button onclick="selectAccount('ACC-003')">ACC-003</button>
 
-<button onclick="go('signup4.html')">Next</button>
+<p id="selected"></p>
+
+<button onclick="next()">Next</button>
+
+<p id="msg"></p>
 
 </div>
 
-<footer>© 2026 Secure System</footer>
+<footer>
+© 2026 Secure System
+</footer>
+
+<!-- ✅ SCRIPT -->
+<script>
+
+let chosenAccount = "";
+
+function selectAccount(acc){
+  chosenAccount = acc;
+  document.getElementById("selected").innerText = "Selected: " + acc;
+}
+
+function next(){
+  let msg = document.getElementById("msg");
+
+  if(chosenAccount === ""){
+    msg.innerText = "Please select an account ❌";
+    return;
+  }
+
+  msg.innerText = "Processing...";
+
+  setTimeout(()=>{
+    window.location.href = "signup4.html";
+  },1000);
+}
+
+</script>
 
 </body>
 </html>
