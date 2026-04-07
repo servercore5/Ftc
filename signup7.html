@@ -1,36 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+
+<title>Case Verification</title>
+
 </head>
 
 <body>
 
 <header>
-<img src="125.png" class="logo">
-<h3>Secure Investigation Portal</h3>
+  <img src="125.png" class="logo">
+  <h3>Secure Investigation Portal</h3>
 </header>
 
 <div class="container">
 
-<input id="case" placeholder="Case ID">
-<button onclick="verify()">Verify</button>
+<h2>Case Verification</h2>
 
-<p id="msg"></p>
+<input id="caseId" placeholder="Enter Case ID">
 
-<button onclick="go('signup8.html')">Next</button>
+<button onclick="verify()">Verify Case</button>
+
+<div id="loader" class="loader" style="display:none;"></div>
+
+<p id="status"></p>
+
+<button onclick="next()">Next</button>
 
 </div>
 
-<footer>© 2026 Secure System</footer>
+<footer>
+© 2026 Secure System
+</footer>
 
+<!-- ✅ SCRIPT -->
 <script>
+
+let verified = false;
+
 function verify(){
- if(case.value==="778249"){
-  msg.innerText="Apple Case Linked ✅";
- }
+
+  let caseId = document.getElementById("caseId").value;
+  let status = document.getElementById("status");
+  let loader = document.getElementById("loader");
+
+  if(!caseId){
+    status.innerText = "Enter Case ID ❌";
+    return;
+  }
+
+  loader.style.display = "block";
+  status.innerText = "Verifying Case...";
+
+  setTimeout(()=>{
+    loader.style.display = "none";
+
+    if(caseId === "778249"){
+      status.innerText = "Case 778249 verified ✅ (Apple Case Linked)";
+      verified = true;
+    } else {
+      status.innerText = "Invalid Case ID ❌";
+      verified = false;
+    }
+
+  },1500);
 }
+
+function next(){
+
+  let status = document.getElementById("status");
+
+  if(!verified){
+    status.innerText = "Please verify valid case first ❌";
+    return;
+  }
+
+  status.innerText = "Proceeding...";
+
+  setTimeout(()=>{
+    window.location.href = "signup8.html";
+  },1000);
+}
+
 </script>
 
 </body>
