@@ -1,47 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
-<script src="firebase.js" type="module"></script>
+
+<title>Personal Info</title>
+
 </head>
 
 <body>
 
 <header>
-<img src="125.png" class="logo">
-<h3>Secure Investigation Portal</h3>
+  <img src="125.png" class="logo">
+  <h3>Secure Investigation Portal</h3>
 </header>
 
 <div class="container">
+
 <h2>Personal Info</h2>
 
 <input id="name" placeholder="Full Name">
 <input id="email" placeholder="Email">
-<input id="phone" placeholder="Phone">
+<input id="phone" placeholder="Phone Number">
 
 <button onclick="save()">Next</button>
 
+<!-- Loader -->
 <div id="loader" class="loader" style="display:none;"></div>
+
+<p id="msg"></p>
+
 </div>
 
-<footer>© 2026 Secure System</footer>
+<footer>
+© 2026 Secure System
+</footer>
 
-<script type="module">
-import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+<!-- ✅ WORKING SCRIPT -->
+<script>
 
-window.save = async function(){
- loader.style.display="block";
+function save(){
 
- await addDoc(collection(db,"users"),{
-  name:name.value,
-  email:email.value,
-  phone:phone.value,
-  time:new Date().toISOString()
- });
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let phone = document.getElementById("phone").value;
+  let msg = document.getElementById("msg");
 
- go("signup2.html");
+  // validation
+  if(!name || !email || !phone){
+    msg.innerText = "Please fill all fields ❌";
+    return;
+  }
+
+  // show loader
+  document.getElementById("loader").style.display = "block";
+
+  // fake processing + redirect
+  setTimeout(()=>{
+    window.location.href = "signup2.html";
+  },1500);
+
 }
+
 </script>
 
 </body>
