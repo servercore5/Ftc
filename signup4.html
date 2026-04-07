@@ -1,48 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+
+<title>Device Verification</title>
+
 </head>
 
 <body>
 
 <header>
-<img src="125.png" class="logo">
-<h3>Secure Investigation Portal</h3>
+  <img src="125.png" class="logo">
+  <h3>Secure Investigation Portal</h3>
 </header>
 
 <div class="container">
 
-<input placeholder="Enter IP">
-<button onclick="verify()">Verify</button>
+<h2>Device Verification</h2>
 
-<div class="loader" id="loader" style="display:none;"></div>
-<p id="text"></p>
+<select id="deviceCount">
+  <option value="">Select Devices</option>
+  <option>1 Device</option>
+  <option>2 Devices</option>
+  <option>3 Devices</option>
+  <option>4 Devices</option>
+  <option>5 Devices</option>
+</select>
 
-<button onclick="go('signup5.html')">Next</button>
+<input id="ip" placeholder="Enter Device IP Address">
+
+<button onclick="verify()">Verify IP</button>
+
+<div id="loader" class="loader" style="display:none;"></div>
+<p id="status"></p>
+
+<button onclick="next()">Next</button>
 
 </div>
 
-<footer>© 2026 Secure System</footer>
+<footer>
+© 2026 Secure System
+</footer>
 
+<!-- ✅ SCRIPT -->
 <script>
+
+let verified = false;
+
 function verify(){
- loader.style.display="block";
 
- let steps=[
- "Encrypting...",
- "Checking Database...",
- "Verified ✅"
- ];
+  let ip = document.getElementById("ip").value;
+  let device = document.getElementById("deviceCount").value;
+  let status = document.getElementById("status");
+  let loader = document.getElementById("loader");
 
- let i=0;
- let int=setInterval(()=>{
-  text.innerText=steps[i];
-  i++;
-  if(i>=steps.length) clearInterval(int);
- },700);
+  if(!device || !ip){
+    status.innerText = "Enter all details ❌";
+    return;
+  }
+
+  loader.style.display = "block";
+  status.innerText = "Verifying...";
+
+  setTimeout(()=>{
+    loader.style.display = "none";
+    status.innerText = "IP Verified ✅";
+    verified = true;
+  },1500);
 }
+
+function next(){
+
+  let status = document.getElementById("status");
+
+  if(!verified){
+    status.innerText = "Please verify IP first ❌";
+    return;
+  }
+
+  status.innerText = "Processing...";
+
+  setTimeout(()=>{
+    window.location.href = "signup5.html";
+  },1000);
+}
+
 </script>
 
 </body>
