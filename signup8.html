@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 
-<title>Case Verification</title>
+<title>Security Key Verification</title>
 
 </head>
 
@@ -18,17 +18,17 @@
 
 <div class="container">
 
-<h2>Case Verification</h2>
+<h2>Security Key Verification</h2>
 
-<input id="caseId" placeholder="Enter Case ID">
+<input id="key" placeholder="Enter Security Key">
 
-<button onclick="verify()">Verify Case</button>
+<button onclick="verify()">Verify Key</button>
 
 <div id="loader" class="loader" style="display:none;"></div>
 
 <p id="status"></p>
 
-<button onclick="next()">Next</button>
+<button onclick="nextPage()">Next</button>
 
 </div>
 
@@ -43,45 +43,45 @@ let verified = false;
 
 function verify(){
 
-  let caseId = document.getElementById("caseId").value;
+  let key = document.getElementById("key").value;
   let status = document.getElementById("status");
   let loader = document.getElementById("loader");
 
-  if(!caseId){
-    status.innerText = "Enter Case ID ❌";
+  if(!key){
+    status.innerText = "Enter Security Key ❌";
     return;
   }
 
   loader.style.display = "block";
-  status.innerText = "Verifying Case...";
+  status.innerText = "Verifying Security Key...";
 
   setTimeout(()=>{
     loader.style.display = "none";
 
-    if(caseId === "778249"){
-      status.innerText = "Case 778249 verified ✅ (Apple Case Linked)";
+    if(key === "876875689008"){
+      status.innerText = "Officer Verified ✅\nEric C. Monti | Badge: EMC1978FTC";
       verified = true;
     } else {
-      status.innerText = "Invalid Case ID ❌";
+      status.innerText = "Invalid Security Key ❌";
       verified = false;
     }
 
   },1500);
 }
 
-function next(){
+function nextPage(){
 
   let status = document.getElementById("status");
 
   if(!verified){
-    status.innerText = "Please verify valid case first ❌";
+    status.innerText = "Please verify key first ❌";
     return;
   }
 
-  status.innerText = "Proceeding...";
+  status.innerText = "Redirecting...";
 
   setTimeout(()=>{
-    window.location.href = "signup8.html";
+    window.location.href = "signup9.html";
   },1000);
 }
 
