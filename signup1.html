@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+<script src="firebase.js" type="module"></script>
+</head>
+
+<body>
+
+<header>
+<img src="125.png" class="logo">
+<h3>Secure Investigation Portal</h3>
+</header>
+
+<div class="container">
+<h2>Personal Info</h2>
+
+<input id="name" placeholder="Full Name">
+<input id="email" placeholder="Email">
+<input id="phone" placeholder="Phone">
+
+<button onclick="save()">Next</button>
+
+<div id="loader" class="loader" style="display:none;"></div>
+</div>
+
+<footer>© 2026 Secure System</footer>
+
+<script type="module">
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+window.save = async function(){
+ loader.style.display="block";
+
+ await addDoc(collection(db,"users"),{
+  name:name.value,
+  email:email.value,
+  phone:phone.value,
+  time:new Date().toISOString()
+ });
+
+ go("signup2.html");
+}
+</script>
+
+</body>
+</html>
