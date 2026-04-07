@@ -1,44 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+
+<title>Create Account</title>
+
 </head>
 
 <body>
 
 <header>
-<img src="125.png" class="logo">
-<h3>Secure Investigation Portal</h3>
+  <img src="125.png" class="logo">
+  <h3>Secure Investigation Portal</h3>
 </header>
 
 <div class="container">
 
+<h2>Create Username & Password</h2>
+
 <input id="user" placeholder="Username">
 
-<button onclick="suggest()">Suggest</button>
-<button onclick="check()">Check</button>
+<button onclick="suggest()">Suggest Username</button>
+<button onclick="check()">Check Availability</button>
 
-<p id="msg"></p>
+<p id="userMsg"></p>
 
-<input type="password" placeholder="Password">
-<input type="password" placeholder="Confirm Password">
+<input id="pass" type="password" placeholder="Create Password">
+<input id="confirm" type="password" placeholder="Confirm Password">
 
-<button onclick="go('signup6.html')">Next</button>
+<p id="passMsg"></p>
+
+<button onclick="next()">Next</button>
 
 </div>
 
-<footer>© 2026 Secure System</footer>
+<footer>
+© 2026 Secure System
+</footer>
 
+<!-- ✅ SCRIPT -->
 <script>
+
+let usernameOK = false;
+
 function suggest(){
- user.value="agent"+Math.floor(Math.random()*9999);
+  let name = "agent" + Math.floor(Math.random()*9999);
+  document.getElementById("user").value = name;
 }
 
 function check(){
- msg.innerText="Checking...";
- setTimeout(()=> msg.innerText="Available ✅",2000);
+  let user = document.getElementById("user").value;
+  let msg = document.getElementById("userMsg");
+
+  if(!user){
+    msg.innerText = "Enter username ❌";
+    usernameOK = false;
+    return;
+  }
+
+  msg.innerText = "Checking...";
+
+  setTimeout(()=>{
+    msg.innerText = "Username Available ✅";
+    usernameOK = true;
+  },1500);
 }
+
+function next(){
+
+  let pass = document.getElementById("pass").value;
+  let confirm = document.getElementById("confirm").value;
+  let passMsg = document.getElementById("passMsg");
+
+  if(!usernameOK){
+    document.getElementById("userMsg").innerText = "Check username first ❌";
+    return;
+  }
+
+  if(!pass || !confirm){
+    passMsg.innerText = "Enter password ❌";
+    return;
+  }
+
+  if(pass !== confirm){
+    passMsg.innerText = "Passwords do not match ❌";
+    return;
+  }
+
+  passMsg.innerText = "Processing...";
+
+  setTimeout(()=>{
+    window.location.href = "signup6.html";
+  },1000);
+}
+
 </script>
 
 </body>
