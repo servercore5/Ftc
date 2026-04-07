@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+
+<title>Secure Portal</title>
+
 </head>
 
 <body>
 
 <header>
-<img src="125.png" class="logo">
-<h3>Secure Investigation Portal</h3>
+  <img src="125.png" class="logo">
+  <h3>Fedral Trade Commission Portal</h3>
 </header>
 
 <div class="container">
+
 <h2>Security Clearance</h2>
 
 <input id="code" placeholder="Enter Access Code">
+
 <button onclick="check()">Enter</button>
 
 <p id="msg"></p>
+
 </div>
 
-<footer>© 2026 Secure System</footer>
+<footer>
+© 2026 FTC Secure System
+</footer>
 
+<!-- ✅ IMPORTANT SCRIPT -->
 <script>
 function check(){
- if(code.value==="231897"){
-  go("auth.html");
- } else {
-  msg.innerText="Access Denied";
- }
+  let input = document.getElementById("code").value;
+  let message = document.getElementById("msg");
+
+  if(input === "231897"){
+    window.location.href = "auth.html";
+  } else {
+    message.innerText = "Invalid Code ❌";
+  }
 }
 </script>
 
