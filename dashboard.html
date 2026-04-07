@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+
+<body>
+
+<header>
+<img src="125.png" class="logo">
+<h3>Secure Investigation Portal</h3>
+</header>
+
+<div class="container">
+
+<h2>Dashboard</h2>
+
+<h3>$12,450.00</h3>
+<p>Status: Verified ✅</p>
+
+<hr>
+
+<h4>Transactions</h4>
+<ul>
+<li>+ $5000</li>
+<li>- $200</li>
+<li>+ $1200</li>
+</ul>
+
+<button onclick="report()">Generate Report</button>
+
+<p id="rep"></p>
+
+</div>
+
+<footer>© 2026 Secure System</footer>
+
+<script>
+function report(){
+ rep.innerText="Generating...";
+ setTimeout(()=>{
+  rep.innerText="Report: Suspicious activity detected.";
+ },2000);
+}
+</script>
+
+</body>
+</html>
