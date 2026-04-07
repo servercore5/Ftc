@@ -1,31 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+
+<title>Purpose</title>
+
 </head>
 
 <body>
 
 <header>
-<img src="125.png" class="logo">
-<h3>Secure Investigation Portal</h3>
+  <img src="125.png" class="logo">
+  <h3>Secure Investigation Portal</h3>
 </header>
 
 <div class="container">
 
-<select>
-<option>Investment</option>
-<option>Savings</option>
-<option>Checkings</option>
-<option>Bonds</option>
+<h2>Select Purpose</h2>
+
+<select id="purpose">
+  <option value="">-- Select Purpose --</option>
+  <option>Investment</option>
+  <option>Savings</option>
+  <option>Checkings</option>
+  <option>Bonds</option>
 </select>
 
-<button onclick="go('signup3.html')">Next</button>
+<button onclick="next()">Next</button>
+
+<p id="msg"></p>
 
 </div>
 
-<footer>© 2026 Secure System</footer>
+<footer>
+© 2026 Secure System
+</footer>
+
+<!-- ✅ FIXED SCRIPT -->
+<script>
+
+function next(){
+
+  let purpose = document.getElementById("purpose").value;
+  let msg = document.getElementById("msg");
+
+  if(purpose === ""){
+    msg.innerText = "Please select a purpose ❌";
+    return;
+  }
+
+  // smooth feel
+  msg.innerText = "Processing...";
+
+  setTimeout(()=>{
+    window.location.href = "signup3.html";
+  },1000);
+
+}
+
+</script>
 
 </body>
 </html>
